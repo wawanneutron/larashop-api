@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/admin/data-larashop';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -44,7 +44,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        // $this->mapWebRoutes(); mematikan route web nya
+        $this->mapWebRoutes(); //mematikan route web nya
 
         //
     }

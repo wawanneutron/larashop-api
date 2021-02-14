@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+/*
 Route::match(['get', 'post'], 'name', function () {
     return 'akses method lebih dari satu dengan match';
 });
@@ -35,4 +35,12 @@ Route::any('buku/{judul}', 'BookController@cetak');
 
 Route::middleware(['cors'])->group(function () {
     Route::get('buku/{judul}', 'BookController@cetak');
+});
+
+*/
+
+Route::prefix('v1')->group(function () {
+    Route::get('books', 'BookController@index');
+    Route::match(['get', 'post'], 'book/{id}', 'BookController@view')
+        ->where('id', '[0-9]+');
 });

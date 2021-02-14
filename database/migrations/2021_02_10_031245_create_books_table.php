@@ -22,7 +22,7 @@ class CreateBooksTable extends Migration
             $table->string('publisher')->nullable();
             $table->string('cover')->nullable();
             $table->float('price')->unsigned()->default(0);
-            $table->integer('weight')->unsigned()->default(0);
+            $table->float('weight')->unsigned()->default(0);
             $table->integer('views')->unsigned()->default(0);
             $table->integer('stock')->unsigned()->default(0);
             $table->enum('status', ['PUBLISH', 'DRAFT'])->default('PUBLISH');
