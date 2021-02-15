@@ -16,8 +16,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'roles',
-        'address', 'city_id', 'province_id', 'avatar', 'status'
+        'name', 'email', 'roles', 'password',
+        'address', 'city_id', 'province_id', 'avatar', 'status',
     ];
 
     /**
@@ -37,4 +37,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /* generate token api */
+    public function generateToken()
+    {
+        $this->api_token = str_random(60);
+        $this->save();
+        return $this->api_token;
+    }
 }

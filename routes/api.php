@@ -39,8 +39,22 @@ Route::middleware(['cors'])->group(function () {
 
 */
 
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 Route::prefix('v1')->group(function () {
+    // route public
     Route::get('books', 'BookController@index');
     Route::match(['get', 'post'], 'book/{id}', 'BookController@view')
         ->where('id', '[0-9]+');
+    //route login, register,logout
+    Route::post('login', 'AuthApiController@login');
+    Route::post('register', 'AuthApiController@register');
+    Route::post('logout', 'AuthApiController@logout');
+
+    //route private
+    Route::middleware('auth:api')->group(function () {
+        Route::post('logout', 'AuthApiController@logout');
+    });
 });
