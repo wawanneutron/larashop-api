@@ -31,13 +31,14 @@ Route::match(['get', 'post'], 'book/{harga}', function () {
 })->where('harga', '[0-9]+');
 
 
-Route::any('buku/{judul}', 'BookController@cetak');
 
 Route::middleware(['cors'])->group(function () {
     Route::get('buku/{judul}', 'BookController@cetak');
 });
 
 */
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
