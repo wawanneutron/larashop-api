@@ -46,9 +46,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
     // route public
-    Route::get('books', 'BookController@index');
-    Route::match(['get', 'post'], 'book/{id}', 'BookController@view')
-        ->where('id', '[0-9]+');
+    Route::get('categories/{count}', 'CategoryController@random');
+    Route::get('books/top-books/{count}', 'BookController@topBooks');
+
     //route login, register,logout
     Route::post('login', 'AuthApiController@login');
     Route::post('register', 'AuthApiController@register');

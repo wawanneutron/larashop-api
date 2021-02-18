@@ -14,6 +14,10 @@ class BooksColection extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'status' => 'success',
+            'message' => 'books data',
+            'data' => parent::toArray($request),
+        ];
     }
 }
