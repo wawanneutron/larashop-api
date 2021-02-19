@@ -16,4 +16,10 @@ class CategoryController extends Controller
             ->get();
         return new CategoryResource($categories);
     }
+
+    public function allCategory()
+    {
+        $categories = Category::paginate(6);
+        return $categories;
+    }
 }

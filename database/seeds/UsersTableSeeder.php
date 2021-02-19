@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         $users = [];
 
         $faker = Factory::create();
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             $avatar_path = 'public/images/users';
             $avatar_fullpath = $faker->image($avatar_path, 640, 480, 'cats', true, true, 'Faker');
             $avatar = str_replace($avatar_path . '/', '', $avatar_fullpath);
