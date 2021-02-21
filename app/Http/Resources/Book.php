@@ -17,7 +17,7 @@ class Book extends ResourceCollection
         return [
             'status' => 'success',
             'message' => 'data all books',
-            'data-books' => parent::toArray($request)
+            'dataBooks' => parent::toArray($request)
         ];
     }
 }
