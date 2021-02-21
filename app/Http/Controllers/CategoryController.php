@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Resources\CategoriesColections as CategoryResource;
+use App\Http\Resources\CategoriesColections;
+use App\Http\Resources\Category as Collection;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,12 +15,12 @@ class CategoryController extends Controller
             ->inRandomOrder()
             ->limit($count)
             ->get();
-        return new CategoryResource($categories);
+        return new CategoriesColections($categories);
     }
 
     public function allCategory()
     {
         $categories = Category::paginate(6);
-        return $categories;
+        return new Collection($categories);
     }
 }
