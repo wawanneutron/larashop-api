@@ -50,6 +50,7 @@ Route::prefix('v1')->group(function () {
     Route::get('categories', 'CategoryController@allCategory');
 
     Route::get('books/top-books/{count}', 'BookController@topBooks');
+    Route::get('books', 'BookController@allBooks');
 
     //route login, register,logout
     Route::post('login', 'AuthApiController@login');

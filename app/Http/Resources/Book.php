@@ -2,12 +2,12 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class BooksColection extends JsonResource
+class Book extends ResourceCollection
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
@@ -16,8 +16,8 @@ class BooksColection extends JsonResource
     {
         return [
             'status' => 'success',
-            'message' => 'books data',
-            'data' => parent::toArray($request),
+            'message' => 'data all books',
+            'data-books' => parent::toArray($request)
         ];
     }
 }
