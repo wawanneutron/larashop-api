@@ -48,6 +48,8 @@ Route::prefix('v1')->group(function () {
     // route public
     Route::get('categories/{count}', 'CategoryController@random');
     Route::get('categories', 'CategoryController@allCategory');
+    // detail category
+    Route::get('categories/slug/{slug}', 'CategoryController@slug');
 
     Route::get('books/top-books/{count}', 'BookController@topBooks');
     Route::get('books', 'BookController@allBooks');
