@@ -16,12 +16,12 @@ class CategoryDetail extends JsonResource
     {
         $parent = parent::toArray($request);
 
-        $data['books'] = $this->books()->paginate(6);
-        $data = array_merge($parent, $data);
+        $dataBooks['books'] = $this->books()->paginate(6);
+        $dataMerge = array_merge($parent, $dataBooks);
         return [
             'status' => 'success',
             'message' => 'data category',
-            'data' => $data
+            'data' => $dataMerge
         ];
     }
 }
