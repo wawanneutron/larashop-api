@@ -53,6 +53,8 @@ Route::prefix('v1')->group(function () {
 
     Route::get('books/top-books/{count}', 'BookController@topBooks');
     Route::get('books', 'BookController@allBooks');
+    // detail book
+    Route::get('book/slug/{slug}', 'BookController@slug');
 
     //route login, register,logout
     Route::post('login', 'AuthApiController@login');

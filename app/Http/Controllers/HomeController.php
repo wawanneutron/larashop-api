@@ -6,6 +6,7 @@ use App\Book;
 use App\Category;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\NotIn;
 
 class HomeController extends Controller
@@ -28,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        $books = Book::paginate(10);
+        $books = Book::paginate(50);
         $categories = Category::all();
 
         return view('home', [
@@ -59,12 +60,20 @@ class HomeController extends Controller
         $book = Book::findOrFail($id);
 
         $cover = $request->file('cover');
-
-        // book
+        // jika menerima request file cover
         if ($cover) {
+            // cek jika ada photo maka hapus photo lama
+            if ($book->cover && file_exists(storage_path('app/public/' . $book->cover))) {
+                Storage::delete('public/' . $book->cover);
+                $path = $cover->store('books', 'public');
+                $book->cover = $path;
+            }
+            //klo tidak ada photo lakukan penyimpanan
             $path = $cover->store('books', 'public');
             $book->cover = $path;
         }
+
+
 
         $book->save();
         return redirect()->route('home')->with('success', 'Update  is successfully');

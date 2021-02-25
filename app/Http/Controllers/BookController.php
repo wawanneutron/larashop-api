@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Http\Resources\Book as ResourcesBook;
+use App\Http\Resources\BookDetail;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -21,5 +22,14 @@ class BookController extends Controller
     {
         $books = Book::paginate(6);
         return new ResourcesBook($books);
+    }
+
+    //detail book
+    public function slug($slug)
+    {
+        $book = Book::where('slug', $slug)->first();
+        $book->views = $book->views + 1;
+        $book->save();
+        return new BookDetail($book);
     }
 }
