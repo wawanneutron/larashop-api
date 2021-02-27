@@ -55,6 +55,8 @@ Route::prefix('v1')->group(function () {
     Route::get('books', 'BookController@allBooks');
     // detail book
     Route::get('book/slug/{slug}', 'BookController@slug');
+    // search book
+    Route::get('books/search/{keyword}', 'BookController@search');
 
     //route login, register,logout
     Route::post('login', 'AuthApiController@login');

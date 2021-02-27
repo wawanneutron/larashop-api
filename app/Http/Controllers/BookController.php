@@ -32,4 +32,13 @@ class BookController extends Controller
         $book->save();
         return new BookDetail($book);
     }
+    /* kita cari dan tampilkan 
+    berdasarkan view terbanyak */
+    public function search($keyword)
+    {
+        $books = Book::select()->where('title', 'LIKE', '%' . $keyword . '%')
+            ->orderBy('views', 'DESC')
+            ->get();
+        return new ResourcesBook($books);
+    }
 }
