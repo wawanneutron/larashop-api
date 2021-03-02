@@ -61,9 +61,7 @@ Route::prefix('v1')->group(function () {
     //route login, register,logout
     Route::post('login', 'AuthApiController@login');
     Route::post('register', 'AuthApiController@register');
-    Route::post('logout', 'AuthApiController@logout');
-
-    //route private
+    //route private logout dengan barer token
     Route::middleware('auth:api')->group(function () {
         Route::post('logout', 'AuthApiController@logout');
     });
