@@ -61,6 +61,12 @@ Route::prefix('v1')->group(function () {
     //route login, register,logout
     Route::post('login', 'AuthApiController@login');
     Route::post('register', 'AuthApiController@register');
+
+    //route checkout
+    Route::get('provinces', 'ShopController@provinces');
+    Route::get('cities', 'ShopController@cities');
+    Route::post('shipping', 'ShopController@shipping');
+
     //route private logout dengan barer token
     Route::middleware('auth:api')->group(function () {
         Route::post('logout', 'AuthApiController@logout');
