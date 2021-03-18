@@ -65,10 +65,13 @@ Route::prefix('v1')->group(function () {
     //route checkout
     Route::get('provinces', 'ShopController@provinces');
     Route::get('cities', 'ShopController@cities');
-    Route::post('shipping', 'ShopController@shipping');
+    //route courier
+    Route::get('couriers', 'ShopController@couriers');
 
     //route private logout dengan barer token
     Route::middleware('auth:api')->group(function () {
         Route::post('logout', 'AuthApiController@logout');
+        Route::post('shipping', 'ShopController@shipping');
+        Route::post('services', 'ShopController@services');
     });
 });
