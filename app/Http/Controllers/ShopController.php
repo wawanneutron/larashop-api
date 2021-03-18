@@ -102,11 +102,12 @@ class ShopController extends Controller
                     $safe_carts[$idx]['cover'] = $book->cover;
                     $safe_carts[$idx]['price'] = $book->price;
                     $safe_carts[$idx]['weight'] = $book->weight;
-                    $safe_carts[$idx]['quantity'] = $book->quantity;
 
                     if ($book->stock < $quantity) { //jika yang dipesan melebihi stock buku
                         $quantity = (int) $book->stock; //jumlah yang dipesan disamakan dengan stock yang ada
                     }
+                    $safe_carts[$idx]['quantity'] = $quantity;
+
                     $total['quantity'] += $quantity; //total jmlh yang dipesan dihitung kembali
                     $total['price'] += $book->price * $quantity; //total price dihitung kembali
                     $total['weight'] += $book->weight * $quantity; //total berat dihitung kembali
